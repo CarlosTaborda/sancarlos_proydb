@@ -14,18 +14,23 @@
     <title>Inicio de sesión</title>
 </head>
 <body>
+  <input type="hidden" id="site-url" value="<?=base_url()?>" />
   <div id="login-window" >
     <form class="w3-card w3-container" style="max-width: 50em;margin: auto;margin-top: 10%;">
+      
+      <div class="w3-center">
+        <img src="<?= base_url("assets/img/school.png") ?>" style="width:5em"/>
+      </div>
       <p>      
         <label class="w3-text-grey">Usuario</label>
-        <input class="w3-input w3-border" type="text" required="">
+        <input class="w3-input w3-border" type="text" required="" id="username-log">
       </p>
       <p>      
         <label class="w3-text-grey">Contraseña</label>
-        <input class="w3-input w3-border" type="password" required="">
+        <input class="w3-input w3-border" type="password" required="" id="password-log">
       </p>
       <div class="w3-center">
-        <button class="w3-btn  w3-indigo" >Ingresar</button>
+        <button class="w3-btn  w3-indigo" @click="login" type="button" >Ingresar</button>
       </div>
 
       <p>
@@ -35,7 +40,7 @@
     <div id="create-user-modal" class="w3-modal" style="display: none;">
       <div class="w3-modal-content w3-animate-opacity w3-card-4">
         <header class="w3-container w3-indigo"> 
-          <span onclick="document.getElementById('modfade').style.display='none'" class="w3-button w3-large w3-display-topright">×</span>
+          <span onclick="document.getElementById('create-user-modal').style.display='none'" class="w3-button w3-large w3-display-topright">×</span>
           <h2>Crear Usuario</h2>
         </header>
         <div class="w3-container">
@@ -96,7 +101,7 @@
           </div>
 
           <div class="w3-row-padding">
-            <div class="w3-half">
+            <div class="w3-third">
               <p>
                 Tipo de documento
                 <select class="w3-input" id="tipo_documento">
@@ -107,10 +112,43 @@
                 </select>
               </p>
             </div>
-            <div class="w3-half">
+            <div class="w3-third">
               <p>
                 Número de documento
                 <input type="text" id="num_documento" class="w3-input">
+              </p>
+            </div>
+
+            <div class="w3-third" style="margin-top: 2em;">
+
+              <input id="teacher" class="w3-radio" type="radio" v-model="user_type" name="user-type" value="teacher" checked="">
+              <label for="teacher">Docente</label>
+
+              <input id="admin" class="w3-radio" type="radio" v-model="user_type" name="user-type" value="admin">
+              <label for="admin">Administrativo</label>
+            </div>
+          </div>
+
+          <div class="w3-row-padding" v-if="user_type=='teacher'">
+            <div class="w3-col s12">
+              <p>
+                Profesión
+                <input type="text" id="profession" class="w3-input">
+              </p>
+            </div>
+          </div>
+
+          <div class="w3-row-padding" v-if="user_type=='admin'">
+            <div class="w3-col s6">
+              <p>
+                EPS
+                <input type="text" id="eps" class="w3-input">
+              </p>
+            </div>
+            <div class="w3-col s6">
+              <p>
+                Fondo Pensional
+                <input type="text" id="pension" class="w3-input">
               </p>
             </div>
           </div>

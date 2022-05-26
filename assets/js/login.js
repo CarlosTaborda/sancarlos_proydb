@@ -1,5 +1,8 @@
 let app = new Vue({
   el:"#login-window",
+  data:{
+    user_type:"teacher"
+  },
   methods:{
     showModalWindow:function(){
       document.getElementById('create-user-modal').style.display='block'
@@ -94,12 +97,78 @@ let app = new Vue({
         validationMsgs.map((s)=>toastr.error(s));
         return false;
       }
+      if(data.contrasena != data.conf_contrasena){
+        toastr.error("Las contraseñas deben ser identicas");
+        return false;
+      }
       return data;
     },
     createUser: function(){
-      if(this.validarUsuario() !== false)
-        toastr.success('Have fun storming the castle!', 'Miracle Max Says')
-        
+      let valid = this.validarUsuario();
+      if(valid !== false){
+
+        valid.user_type = this.user_type;
+        valid.profession = $("#profession").val()
+        valid.eps = $("#eps").val()
+        valid.pension = $("#pension").val()
+
+
+        $.post(
+          $("#site-url").val()+"index.php/Users/create",
+          valid,
+          function(res){
+            if(res.success){
+              toastr.success("Usuario: "+res.user[1]+" creado");
+              $("#create-user-modal").hide();
+            }
+          },
+          "json"
+        )
+      }   
+    },
+    login: function (){
+      let loginData = {
+        username: $("#username-log").val(),
+        password: $("#password-log").val()
+      }
+
+      let validateRules = {
+        username: {
+          presence:{
+            allowEmpty:false,
+            message:"^Debe establecer el usuario"
+          },
+        },
+        password: {
+          presence:{
+            allowEmpty:false,
+            message:"^Debe establecer la contraseña"
+          },
+        },
+      }
+
+      let validate_result = validate(loginData, validateRules);
+      
+      if(  validate_result != undefined ){
+
+        let validationMsgs = Object.entries(validate_result).map(el=>el[1].join());
+        validationMsgs.map((s)=>toastr.error(s));
+        return false;
+      }
+
+      $.post(
+        $("#site-url").val()+"index.php/Users/auth",
+        loginData,
+        function(res){
+          if(!res.success)
+            toastr.error("No se pudo iniciar sesion, revise sus datos")
+          else{
+            toastr.success("Exito, se ha iniciado sesión");
+
+          }
+        },
+        "json"
+      )
     }
   }
 })
