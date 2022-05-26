@@ -72,4 +72,11 @@ class Users extends CI_Controller {
 			echo json_encode(["success"=>true]);
 		}
 	}
+
+	public function home(){
+		$this->load->model("Area_model", "area_mdl");
+
+		$data["areas"] = $this->area_mdl->get_all();
+		$this->load->view("user/home",$data);
+	}
 }
