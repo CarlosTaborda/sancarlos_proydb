@@ -27,7 +27,7 @@ setTimeout(()=>{
       { 
         "data": "codigo",
         "render": function ( data, type, row, meta ) {
-          return '<button class="w3-btn w3-red">Eliminar</button>';
+          return '<button class="w3-btn w3-red" onclick="app.delete('+data+')">Eliminar</button>';
         }
       },
 
@@ -111,12 +111,27 @@ let app = new Vue({
 
               if(res.success){
                 toastr.success("Materia creada");
+                $("#table-courses").DataTable().ajax.reload()
               }
   
             },
             "json"
           )
         }
+        
+      },
+      delete: function(codigo){
+
+        $.get(
+          $("#site-url").val()+"index.php/course/delete/"+codigo,
+          function(res){
+
+            if( res.success ){
+              $("#table-courses").DataTable().ajax.reload()
+            }
+          },
+          "json"
+        )
       }
     }
 });

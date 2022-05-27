@@ -36,4 +36,10 @@ class Course extends CI_Controller {
 		echo json_encode(["data"=>$result]);
 	}
 
+	public function delete($codigo){
+		$this->course_mdl->delete($codigo);
+		echo json_encode(["success"=>true]);
+
+	}
+
 }

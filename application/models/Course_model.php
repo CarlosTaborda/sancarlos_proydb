@@ -23,4 +23,10 @@ class Course_model extends CI_Model {
         return $this->db->query(sprintf($sql, $filter))->result_array();
     }
 
+    public function delete( $codigo){
+
+        $sql ="delete from materia where codigo=?";
+        $this->db->query($sql, $codigo);
+    }
+
 }
