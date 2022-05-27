@@ -5,8 +5,9 @@ $data["id_window"]="window_course";
 $this->load->view("layout/header", $data);
 ?>
 
-<div class="w3-card" >
-  <div class="w3-row-padding">
+<div class="w3-card w3-container" >
+  <h3 class="w3-margin">Crear o Editar Materias</h3>
+  <div class="w3-row-padding" style="margin-bottom: 4em;">
     <div class="w3-col s2">
       <p>
         Código
@@ -42,7 +43,7 @@ $this->load->view("layout/header", $data);
   </div>
 
   <div class="w3-container">
-    <table id="table-courses" >
+    <table id="table-courses"  >
       <thead class="w3-teal">
         <tr>
           <th>Código</th>

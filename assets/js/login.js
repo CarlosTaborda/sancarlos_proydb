@@ -166,7 +166,7 @@ let app = new Vue({
             toastr.success("Exito, se ha iniciado sesión");
             setTimeout(() => {
               window.location.replace($("#site-url").val()+"index.php/Users/home");
-            }, 2000);
+            }, 1500);
           }
         },
         "json"

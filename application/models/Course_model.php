@@ -12,6 +12,23 @@ class Course_model extends CI_Model {
         return $this->db->query($sql, $data);
     }
 
+    public function get_by_code($codigo){
+        $sql="
+        select * from materia m
+        where m.codigo=?
+        ";
+        return $this->db->query($sql, $codigo)->first_row("array");
+    }
+
+    public function update($data){
+        $sql = "
+            update materia set nombre='%s', hrs_semana='%s', area_codigo='%s'
+            where codigo='%s'
+        ";
+
+        $this->db->query(sprintf($sql, $data[1], $data[2], $data[3], $data[0]));
+    }
+
     public function get_list($filter="", $offset=0, $length="10"){
 
         $sql="

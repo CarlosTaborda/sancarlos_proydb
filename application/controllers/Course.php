@@ -11,6 +11,8 @@ class Course extends CI_Controller {
 
 	public function create(){
 		
+		$message="";
+
 		$course = [
 			$this->input->post('codigo'),
 			$this->input->post('nombre'),
@@ -18,8 +20,18 @@ class Course extends CI_Controller {
 			$this->input->post('area')
 		];
 
-		$this->course_mdl->create($course);
-		echo json_encode(["success"=>true, "course"=>$course]);
+		if( !empty($this->course_mdl->get_by_code($course[0])) ){
+			$this->course_mdl->update($course);
+			$message="Materia actualizada exitosamente";
+		}
+		else{
+			$this->course_mdl->create($course);
+			$message="Materia creada exitosamente";
+
+		}
+
+		
+		echo json_encode(["success"=>true, "course"=>$course, "message"=>$message]);
 	}
 
 	public function list(){

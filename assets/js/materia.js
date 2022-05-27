@@ -106,8 +106,14 @@ let app = new Vue({
   
         return courseData;
       },
+      reset_form:function(){
+        this.codigo="";
+        this.nombre="";
+        this.hrs_semana="";
+        this.area="";
+      },
       create:function(){
-        
+        let self = this;
         let result = this.validate();
         if( result !== false ){
           $.post(
@@ -116,8 +122,9 @@ let app = new Vue({
             function(res){
 
               if(res.success){
-                toastr.success("Materia creada");
+                toastr.success(res.message);
                 $("#table-courses").DataTable().ajax.reload()
+                self.reset_form();
               }
   
             },
@@ -144,7 +151,6 @@ let app = new Vue({
         this.nombre = course.nombre
         this.hrs_semana = course.hrs_semana
         this.area = course.area_codigo
-
       }
     }
 });
