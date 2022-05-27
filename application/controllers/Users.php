@@ -79,4 +79,11 @@ class Users extends CI_Controller {
 		$data["areas"] = $this->area_mdl->get_all();
 		$this->load->view("user/home",$data);
 	}
+
+	public function logout(){
+		$this->session->set_userdata('logged', false);
+		$this->session->set_userdata('user', null);
+
+		redirect(base_url());
+	}
 }

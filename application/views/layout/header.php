@@ -23,7 +23,7 @@
   <h3 class="w3-bar-item">Menu</h3>
   <a href="#" class="w3-bar-item w3-button">Link 1</a>
   <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="<?= site_url("Users/logout") ?>" class="w3-bar-item w3-button">Salir</a>
 </div>
 
 <!-- Page Content -->

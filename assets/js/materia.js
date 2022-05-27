@@ -30,6 +30,12 @@ setTimeout(()=>{
           return '<button class="w3-btn w3-red" onclick="app.delete('+data+')">Eliminar</button>';
         }
       },
+      { 
+        "data": "codigo",
+        "render": function ( data, type, row, meta ) {
+          return '<button class="w3-btn w3-indigo" onclick=\'app.edit('+JSON.stringify(row)+')\'>Editar</button>';
+        }
+      },
 
 
     ],
@@ -132,6 +138,13 @@ let app = new Vue({
           },
           "json"
         )
+      },
+      edit:function(course){
+        this.codigo = course.codigo
+        this.nombre = course.nombre
+        this.hrs_semana = course.hrs_semana
+        this.area = course.area_codigo
+
       }
     }
 });

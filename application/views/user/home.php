@@ -50,6 +50,8 @@ $this->load->view("layout/header", $data);
           <th>Hrs Semana</th>
           <th>Área</th>
           <th>Eliminar</th>
+          <th>Editar</th>
+
         </tr>
       </thead>
     </table>
