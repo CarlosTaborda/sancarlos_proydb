@@ -6,18 +6,18 @@ class Student_model extends CI_Model {
     public function create($data){
         $sql="
         insert into estudiante (num_documento, nombres, apellidos, fecha_nacimiento, direccion, telefono, estado, acudiente_num_documento, tipo_documento_codigo, grupo_codigo)
-        values('?','?','?','?','?','?','?','?','?','?');
+        values(?,?,?,?,?,?,?,?,?,?);
         ";
 
         $this->db->query($sql, $data);
     }
 
-    public function delete($data){
+    public function delete($codigo){
         $sql="
         delete from estudiante where num_documento=?
         ";
 
-        $this->db->query($sql, $data);
+        $this->db->query($sql, [$codigo]);
     }
 
     public function update($data){
