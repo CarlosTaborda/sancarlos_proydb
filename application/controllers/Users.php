@@ -6,10 +6,16 @@ class Users extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("User_model", "user_mdl");
+
+		
 	}
 
 	public function index()
 	{
+		if($this->session->userdata('logged')=== true){
+			redirect(site_url("users/home"));
+		}
+		
 		$this->load->model("TypeDocument_model", "typedoc_mdl");
 		$data["doc_types"] = $this->typedoc_mdl->get_all();
 		$this->load->view('user/login.php', $data);

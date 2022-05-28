@@ -5,7 +5,8 @@ $data["id_window"]="window_user";
 $this->load->view("layout/header", $data);
 ?>
 
-<div class="w3-card">
+<div class="w3-card w3-container">
+  <h3 class="w3-margin">Editar mi información</h3>
   <div class="w3-row-padding">
     <div class="w3-col s3">
       <p>
@@ -53,13 +54,13 @@ $this->load->view("layout/header", $data);
     <div class="w3-col s3">
       <p>
         Contraseña
-        <input type="password"  id="contrasena" class="w3-input">
+        <input type="password"  id="contrasena" class="w3-input" value="<?= $user["contrasena"] ?>">
       </p>
     </div>
     <div class="w3-col s3">
       <p>
         Confirmar contraseña
-        <input type="password"  id="conf_contrasena" class="w3-input">
+        <input type="password"  id="conf_contrasena" class="w3-input" value="<?= $user["contrasena"] ?>">
       </p>
     </div>
   </div>
