@@ -22,13 +22,13 @@ setTimeout(()=>{
       { "data": "codigo", },
       { "data": "nombre",  },
       { 
-        "data": "codigo",
+        "data": "num_documento",
         "render": function ( data, type, row, meta ) {
           return '<button class="w3-btn w3-red" onclick="app.delete('+data+')">Eliminar</button>';
         }
       },
       { 
-        "data": "codigo",
+        "data": "num_documento",
         "render": function ( data, type, row, meta ) {
           return '<button class="w3-btn w3-indigo" onclick=\'app.edit('+JSON.stringify(row)+')\'>Editar</button>';
         }

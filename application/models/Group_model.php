@@ -5,7 +5,7 @@ class Group_model extends CI_Model {
 
     public function get_all(){
         $sql = "
-        insert into grupo(codigo, nombre, anio)
+        select * from grupo g order by g.nombre
         ";
 
         return $this->db->query($sql)->result_array();

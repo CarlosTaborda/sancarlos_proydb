@@ -26,6 +26,8 @@
   <a href="<?= site_url("area/index") ?>" class="w3-bar-item w3-button">Areas</a>
   <a href="<?= site_url("period") ?>" class="w3-bar-item w3-button">Periodo</a>
   <a href="<?= site_url("users/account") ?>" class="w3-bar-item w3-button">Mis datos</a>
+  <a href="<?= site_url("student") ?>" class="w3-bar-item w3-button">Estudiantes</a>
+
   <a href="<?= site_url("users/logout") ?>" class="w3-bar-item w3-button">
     Salir
   </a>
