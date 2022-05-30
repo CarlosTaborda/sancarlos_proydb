@@ -49,7 +49,7 @@ class Student extends CI_Controller {
 			$length
 		);
 
-		echo json_encode(["data"=>$result]);
+		echo json_encode(["data"=>$result,"iTotalRecords"=>PHP_INT_MAX, "iTotalDisplayRecords"=>PHP_INT_MAX ]);
 	}
 
 	public function delete($numdoc){

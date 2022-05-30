@@ -49,7 +49,8 @@ class Student_model extends CI_Model {
         $sql = "
         select  
             s.*,
-            g.*,
+            g.nombre,
+            g.codigo,
             concat(a.nombres, ' ', a.apellidos) acudiente
         from estudiante s, tipo_documento td, grupo g, acudiente a
         where 

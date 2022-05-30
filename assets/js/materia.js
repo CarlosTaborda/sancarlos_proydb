@@ -40,8 +40,7 @@ setTimeout(()=>{
 
     ],
     initComplete: function () {
-      $("#table-courses").DataTable().buttons().container()
-          .appendTo( $('.col-md-6:eq(0)', table.table().container() ) );
+   
     }
   });
 

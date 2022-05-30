@@ -25,10 +25,10 @@ $this->load->view("layout/header", $data);
     </div>
     <div class="w3-row-padding" style="margin-bottom: 0.5em;">
         <div class="w3-col m4">
-            <button class="w3-btn w3-teal" >Cant. Estudiantes por Grupo</button>
+            <a class="w3-btn w3-teal" href="<?= site_url("report/reporta") ?>" >Cant. Estudiantes por Grupo</a>
         </div>
         <div class="w3-col m4">
-            <button class="w3-btn w3-orange" >1</button>
+            <a class="w3-btn w3-orange" href="<?= site_url("report/reportd") ?>" >Profesores con mas horas licencia</a>
         </div>
         <div class="w3-col m4">
             <button class="w3-btn w3-red" >Estudiantes 3 o mas materias perdidas</button>
@@ -36,7 +36,7 @@ $this->load->view("layout/header", $data);
     </div>
     <div class="w3-row-padding" style="margin-bottom: 0.5em;">
         <div class="w3-col m4">
-            <button class="w3-btn w3-teal" >List. Estudiantes por Grupo</button>
+            <a class="w3-btn w3-teal" href="<?= site_url("report/reportb") ?>" > List. Estudiantes por Grupo</a>
         </div>
         <div class="w3-col m4">
             <button class="w3-btn w3-orange" >2</button>

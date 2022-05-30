@@ -2,11 +2,13 @@ var table;
 
 setTimeout(()=>{
   table= $("#table-student").DataTable({
+    
     "info": false,
     "responsive": true, 
     "lengthChange": true, 
     "autoWidth": false,
     "ordering": false,
+    pageLength: 10,
     "serverSide": true,
     "pagingType": "simple",
     language: {
@@ -19,7 +21,7 @@ setTimeout(()=>{
     },
     "columns": [
 
-      { "data": "codigo", },
+      { "data": "num_documento", },
       { "data": "nombres",  },
       { "data": "apellidos",  },
       { "data": "fecha_nacimiento",  },

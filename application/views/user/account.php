@@ -107,7 +107,7 @@ $this->load->view("layout/header", $data);
   <?php endif; ?>
 
 
-  <div class="w3-container">
+  <div class="w3-container" style="margin-bottom: 1.5em;">
     <button class="w3-btn w3-right w3-red" @click="deleteUser">Borrar</button>
     <button class="w3-btn w3-right w3-teal" @click="updateUser" style="margin-right: 1em;">Editar</button>
   </div>
