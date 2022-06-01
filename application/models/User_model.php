@@ -117,6 +117,14 @@ class User_model extends CI_Model {
         return $this->db->query(sprintf($sql, $username, $password))->first_row('array');
     }
 
+    public function get_by_type($type="teachers"){
+        $sql="
+        select * from usuario u
+        ".($type=="teachers"?"join docente d on d.usuario_num_documento = u.num_documento":"join administrativo a on a.usuario_num_documento = u.num_documento")."
+        order by u.nombres";
+        return $this->db->query($sql)->result_array();
+    }
+
     public function delete($numdoc){
         $sql ="delete from administrativo where usuario_num_documento=?";
         $this->db->query( $sql, [$numdoc] );
