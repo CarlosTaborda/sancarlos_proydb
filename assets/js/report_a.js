@@ -12,7 +12,9 @@ const data = {
   labels: labels,
   datasets: [{
     label: 'Número de estudiantes por grupo',
-    backgroundColor: 'rgb(178, 69, 92)',
+    backgroundColor: palette('tol', values.length).map(function(hex) {
+      return '#' + hex;
+    }),
     borderColor: 'rgb(255, 99, 132)',
     data: values,
   }]

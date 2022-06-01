@@ -12,7 +12,7 @@ $this->load->view("layout/header", $data);
 <?php endforeach; ?>
 <!-- ./DATA GRAPH -->
 
-<div style="height: 12em">
+<div style="height: 12em; margin:2em 0em">
   <canvas id="graph-bar" >
 
   </canvas>
@@ -49,6 +49,7 @@ $this->load->view("layout/header", $data);
 unset($data);
 $data["load_files"] = [
   sprintf("<script src='%s' ></script>",'https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js'),
+  sprintf("<script src='%s' ></script>",'https://cdn.jsdelivr.net/gh/google/palette.js@master/palette.js'),
   sprintf("<script src='%s' ></script>", base_url("assets/js/report_a.js"))
 ];
 $this->load->view("layout/footer", $data);

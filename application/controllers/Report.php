@@ -34,5 +34,12 @@ class Report extends CI_Controller {
 	}
 
 
+	public function reportD(){
+
+		$data["data_report"]=$this->report_mdl->report_d();
+		$this->load->view("report/reportD", $data);
+	}
+
+
 
 }
