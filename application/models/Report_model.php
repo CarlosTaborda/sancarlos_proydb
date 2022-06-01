@@ -24,6 +24,19 @@ class Report_model extends CI_Model {
         return $this->db->query($sql, [$grupo])->result_array();
     }
 
+    public function report_c(){
+        $sql="
+        select
+            e.*,
+            g.nombre grupo_nomb
+        from estudiante e
+        left join grupo g on g.codigo=e.grupo_codigo
+        where e.estado=0
+        order by e.nombres
+        ";
+        return $this->db->query($sql)->result_array();
+    }
+
 
     public function report_d(){
 

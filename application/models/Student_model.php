@@ -5,8 +5,8 @@ class Student_model extends CI_Model {
 
     public function create($data){
         $sql="
-        insert into estudiante (num_documento, nombres, apellidos, fecha_nacimiento, direccion, telefono, acudiente_num_documento, tipo_documento_codigo, grupo_codigo)
-        values(?,?,?,?,?,?,?,?,?)
+        insert into estudiante (num_documento, nombres, apellidos, fecha_nacimiento, direccion, telefono, acudiente_num_documento, tipo_documento_codigo, grupo_codigo, estado)
+        values(?,?,?,?,?,?,?,?,?,?)
         ";
 
         $this->db->query($sql, $data);
@@ -26,12 +26,12 @@ class Student_model extends CI_Model {
         $sql="
         update estudiante set nombres='%s', apellidos='%s', fecha_nacimiento='%s', 
         direccion='%s', telefono='%s', acudiente_num_documento='%s', 
-        tipo_documento_codigo='%s', grupo_codigo='%s'
+        tipo_documento_codigo='%s', grupo_codigo='%s', estado='%s'
         where num_documento='%s'
         ";
 
 
-        $this->db->query(sprintf($sql, $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[0]));
+        $this->db->query(sprintf($sql, $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9], $data[0]));
     }
 
     public function get_by_numdoc($numdoc){

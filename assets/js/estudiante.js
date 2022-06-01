@@ -184,7 +184,8 @@ let app = new Vue({
         telefono:$("#es-telefono").val(),  
         acudiente_num_documento:$("#es-acudiente_num_documento").val(), 
         tipo_documento_codigo:$("#es-tipo_documento_codigo").val(),
-        grupo_codigo:$("#es-grupo_codigo").val()
+        grupo_codigo:$("#es-grupo_codigo").val(),
+        estado:$('#es-estado').is(':checked')?1:0
       }
 
       return estudiante;
@@ -287,6 +288,7 @@ let app = new Vue({
       $("#es-direccion").val("")
       $("#es-telefono").val("")
       $("#es-grupo_codigo").val("")
+      $( "#es-estado" ).prop( "checked", false );
 
     },
     createEstudiante: function(){
@@ -336,6 +338,7 @@ let app = new Vue({
             $("#acu-telefono").val(res.acudiente.telefono)
             $("#acu-direccion").val(res.acudiente.direccion)
             $("#acu-parentesco").val(res.acudiente.parentesco)
+            
 
             $("#es-acudiente_num_documento").val(res.estudiante.acudiente_num_documento)
             $("#es-tipo_documento_codigo").val(res.estudiante.tipo_documento_codigo)
@@ -346,6 +349,7 @@ let app = new Vue({
             $("#es-direccion").val(res.estudiante.direccion)
             $("#es-telefono").val(res.estudiante.telefono)
             $("#es-grupo_codigo").val(res.estudiante.grupo_codigo)
+            $( "#es-estado" ).prop( "checked", res.estudiante.estado==1 );
           }
         },
         "json"

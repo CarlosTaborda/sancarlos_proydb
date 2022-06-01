@@ -113,7 +113,7 @@ $this->load->view("layout/header", $data);
     <div id="create" class="w3-container tab w3-hide">
       <h3 class="w3-margin">Estudiante</h3>
       <div class="w3-row-padding">
-        <div class="w3-col m12">
+        <div class="w3-col m9">
           <p>
             Acudiente
             <select name="" id="es-acudiente_num_documento" class="w3-input">
@@ -121,6 +121,13 @@ $this->load->view("layout/header", $data);
               <option v-for="(a, index) in acudientes" :value="a.num_documento" >{{ a.nombres+' '+a.apellidos }}</option>
             </select>
           </p>
+        </div>
+
+        <div class="w3-col m3" style="margin-top: 2.6em;">
+          <label for="es-estado">
+            <input id="es-estado" class="w3-check" type="checkbox" checked="checked">
+            Activo
+          </label>
         </div>
       </div>
       <div class="w3-row-padding">

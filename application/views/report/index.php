@@ -57,7 +57,7 @@ $this->load->view("layout/header", $data);
     </div>
     <div class="w3-row-padding" style="margin-bottom: 0.5em;">
         <div class="w3-col m4">
-            <a href="<?=site_url('report/reportc')?>" class="w3-btn w3-teal" >Estudiantes Retirados</a>
+            <a href="<?=site_url('report/reportc')?>" class="w3-btn w3-teal" >Estudiantes Inactivos</a>
         </div>
         <div class="w3-col m4">
             <button class="w3-btn w3-orange" >3</button>
