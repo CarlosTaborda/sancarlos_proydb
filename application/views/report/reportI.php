@@ -24,10 +24,24 @@ $this->load->view("layout/header", $data);
 </div>
 <?php endforeach; ?>
 </div>
-
-
 <div class="w3-card w3-container" style="padding:1em">
+
   
+  
+
+  <form class="w3-row-padding" action="<?= site_url("report/reporti") ?>" method="post" >
+    <div class="w3-col m4">
+      <p>
+        Año
+        <input type="number" value="<?= date('Y') ?>" class="w3-input" name="anio" required  >
+      </p>
+    </div>
+    <div class="w3-col m2">
+      <button class="w3-btn w3-indigo" style="margin-top: 2.2em" >
+        Buscar
+      </button>
+    </div>
+  </form>
   <div class="w3-row-padding">
     <div class="w3-col m12">
       <table class="w3-table">
