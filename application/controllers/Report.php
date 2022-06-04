@@ -47,5 +47,16 @@ class Report extends CI_Controller {
 	}
 
 
+	public function reportH(){
+
+		$anio = empty($this->input->post("anio"))?
+					date("Y"):
+					$this->input->post("anio");
+
+		$data["data_report"]=$this->report_mdl->report_h($anio);
+		$this->load->view("report/reportH", $data);
+	}
+
+
 
 }

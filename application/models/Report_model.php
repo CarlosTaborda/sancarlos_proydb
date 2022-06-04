@@ -56,4 +56,36 @@ class Report_model extends CI_Model {
         return $this->db->query($sql)->result_array();
     }
 
+
+    public function report_h($anio){
+        $sql="
+        select
+            num_documento,
+            nombres,
+            apellidos,
+            nomb_grupo,
+            count(materia) cant_mat_perd
+        from (
+            select
+                e.num_documento,
+                e.nombres,
+                mg.materia_codigo materia,
+                e.apellidos,
+                g.nombre nomb_grupo,
+                sum(n.nota) nota
+            from estudiante e
+            join grupo g on e.grupo_codigo = g.codigo
+            join materia_grupo mg on mg.grupo_codigo = g.codigo
+            join nota n on (n.estudiante_num_documento = e.num_documento and n.materia_codigo = mg.materia_codigo and n.grupo_codigo=g.codigo)
+            where g.anio=?
+            group by e.num_documento, mg.materia_codigo
+            having sum(n.nota) < 3
+        ) mp
+        group by num_documento
+        ";
+
+        return $this->db->query($sql, [$anio])->result_array();
+        var_dump($this->db->last_query());
+    }
+
 }
