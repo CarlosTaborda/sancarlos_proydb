@@ -72,14 +72,14 @@ class Report_model extends CI_Model {
                 mg.materia_codigo materia,
                 e.apellidos,
                 g.nombre nomb_grupo,
-                sum(n.nota) nota
+                avg(n.nota) nota
             from estudiante e
             join grupo g on e.grupo_codigo = g.codigo
             join materia_grupo mg on mg.grupo_codigo = g.codigo
             join nota n on (n.estudiante_num_documento = e.num_documento and n.materia_codigo = mg.materia_codigo and n.grupo_codigo=g.codigo)
             where g.anio=?
             group by e.num_documento, mg.materia_codigo
-            having sum(n.nota) < 3
+            having avg(n.nota) < 3
         ) mp
         group by num_documento
         ";
@@ -95,7 +95,8 @@ class Report_model extends CI_Model {
         from (
         select
             mp.grupo_codigo,
-            mp.nomb_grupo
+            mp.nomb_grupo,
+            mp.num_documento
             from  
             (
                 select
@@ -105,7 +106,7 @@ class Report_model extends CI_Model {
                     e.apellidos,
                     mg.grupo_codigo,
                     g.nombre nomb_grupo,
-                    sum(n.nota) nota
+                    avg(n.nota) nota
                 from estudiante e
                 join grupo g on e.grupo_codigo = g.codigo
                 join materia_grupo mg on mg.grupo_codigo = g.codigo
@@ -113,10 +114,10 @@ class Report_model extends CI_Model {
                     on (n.estudiante_num_documento = e.num_documento and n.materia_codigo = mg.materia_codigo and n.grupo_codigo=g.codigo)
                 where g.anio=?
                 group by e.num_documento, mg.materia_codigo
-                having sum(n.nota) < 3
+                having avg(n.nota) < 3
 
             ) mp 
-            group by mp.grupo_codigo
+            group by mp.num_documento
         )mp
         join (
             select

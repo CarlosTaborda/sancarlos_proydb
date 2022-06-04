@@ -5,11 +5,26 @@ $data["id_window"]="window_report_b";
 $this->load->view("layout/header", $data);
 
 ?>
-<div style="height: 12em; margin:2em 0em">
-  <canvas id="pie-bar" >
+
+<div 
+  style="display: flex;flex-wrap: wrap;justify-content: center;"
+>
+<?php foreach($data_report as $e): ?>
+<div 
+  class="char-info" 
+  data-group_name="<?= $e["nomb_grupo"] ?>" 
+  data-total_students="<?= $e["cant_tot"] ?>" 
+  data-perd_students="<?= $e["cant_perd"] ?>"
+  style="height:24em; width:14em;margin: 2em 4em;"
+>
+  <h3 class="w3-center"><?= $e["nomb_grupo"] ?></h3>
+  <canvas id="pie-bar"  >
 
   </canvas>
 </div>
+<?php endforeach; ?>
+</div>
+
 
 <div class="w3-card w3-container" style="padding:1em">
   
@@ -20,8 +35,8 @@ $this->load->view("layout/header", $data);
           <tr>
             <th>Cod. Grupo</th>
             <th>Grupo</th>
-            <th>Estudiantes perdiendo</th>
-            <th>Total Estudiante</th>
+            <th class="w3-center">Estudiantes perdiendo</th>
+            <th class="w3-center">Total Estudiantes</th>
           </tr>
         </thead>
         <tbody>
@@ -29,8 +44,8 @@ $this->load->view("layout/header", $data);
           <tr>
             <td ><?= $e["grupo_codigo"] ?></td>
             <td class="data-lbl"><?= $e["nomb_grupo"] ?></td>
-            <td><?= $e["cant_perd"] ?></td>
-            <td><?= $e["cant_tot"] ?></td>
+            <td class="w3-center"><?= $e["cant_perd"] ?></td>
+            <td class="w3-center"><?= $e["cant_tot"] ?></td>
 
           </tr>
           <?php endforeach; ?>
@@ -44,9 +59,7 @@ $this->load->view("layout/header", $data);
 unset($data);
 $data["load_files"] = [
   sprintf("<script src='%s' ></script>",'https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js'),
-  sprintf("<script src='%s' ></script>",'https://cdn.jsdelivr.net/gh/google/palette.js@master/palette.js'),
-
-  sprintf("<script src='%s' ></script>", base_url("assets/js/report_d.js"))
+  sprintf("<script src='%s' ></script>", base_url("assets/js/report_i.js"))
 ];
 $this->load->view("layout/footer", $data);
 ?>
