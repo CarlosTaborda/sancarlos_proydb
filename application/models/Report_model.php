@@ -85,7 +85,51 @@ class Report_model extends CI_Model {
         ";
 
         return $this->db->query($sql, [$anio])->result_array();
-        var_dump($this->db->last_query());
+        
+    }
+
+    public function report_i($anio){
+        $sql ="
+        select 
+            mp.grupo_codigo, nomb_grupo, count(mp.grupo_codigo) cant_perd  , cg.cant cant_tot 
+        from (
+        select
+            mp.grupo_codigo,
+            mp.nomb_grupo
+            from  
+            (
+                select
+                    e.num_documento,
+                    e.nombres,
+                    mg.materia_codigo materia,
+                    e.apellidos,
+                    mg.grupo_codigo,
+                    g.nombre nomb_grupo,
+                    sum(n.nota) nota
+                from estudiante e
+                join grupo g on e.grupo_codigo = g.codigo
+                join materia_grupo mg on mg.grupo_codigo = g.codigo
+                join nota n 
+                    on (n.estudiante_num_documento = e.num_documento and n.materia_codigo = mg.materia_codigo and n.grupo_codigo=g.codigo)
+                where g.anio=?
+                group by e.num_documento, mg.materia_codigo
+                having sum(n.nota) < 3
+
+            ) mp 
+            group by mp.grupo_codigo
+        )mp
+        join (
+            select
+                grupo_codigo,
+                count(grupo_codigo) cant
+            from estudiante
+            group by grupo_codigo
+        ) cg on mp.grupo_codigo = cg.grupo_codigo
+        group by mp.grupo_codigo
+        ";
+
+        return $this->db->query($sql, [$anio])->result_array();
+        //var_dump($this->db->last_query());
     }
 
 }

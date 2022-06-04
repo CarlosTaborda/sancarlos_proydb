@@ -12,9 +12,17 @@ $this->load->view("layout/header", $data);
 
 <div class="w3-card w3-container" style="padding:1em">
 
-  <form class="w3-row-padding" >
+  <form class="w3-row-padding" action="<?= site_url("report/reporth") ?>" method="post" >
     <div class="w3-col m4">
-      <input type="text" class="w3-input">
+      <p>
+        Año
+        <input type="number" value="<?= date('Y') ?>" class="w3-input" name="anio" required  >
+      </p>
+    </div>
+    <div class="w3-col m2">
+      <button class="w3-btn w3-indigo" style="margin-top: 2.2em" >
+        Buscar
+      </button>
     </div>
   </form>
   

@@ -52,7 +52,12 @@ $this->load->view("layout/header", $data);
             <button class="w3-btn w3-orange" >2</button>
         </div>
         <div class="w3-col m4">
-            <button class="w3-btn w3-red" >2</button>
+            <a class="w3-btn w3-red" href="<?= site_url("report/reporti") ?>" >
+                Cant. Estudiantes perdiendo el año por grupo
+                <span class="material-icons">
+                leaderboard
+                </span>
+            </a>
         </div>
     </div>
     <div class="w3-row-padding" style="margin-bottom: 0.5em;">
