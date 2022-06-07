@@ -156,4 +156,37 @@ class Report_model extends CI_Model {
         //var_dump($this->db->last_query());
     }
 
+    public function report_j(){
+
+        $sql = "
+        select
+            ce.codigo,
+            ce.gru_nombre,
+            ce.cant_estudiantes,
+            ifnull(cp.cant_inactivos, 0) cant_inactivos
+        from (
+            select
+            g.codigo,
+            g.nombre gru_nombre,
+            count(e.num_documento) cant_estudiantes
+            from grupo g
+            join estudiante e on g.codigo = e.grupo_codigo
+            group by g.codigo
+        )
+        ce 
+        left join (
+        select
+            g.codigo,
+            g.nombre gru_nombre,
+            count(e.num_documento) cant_inactivos
+        from  grupo g
+        left join estudiante e on g.codigo = e.grupo_codigo
+        where e.estado=0
+        group by g.codigo
+        ) cp on ce.codigo = cp.codigo
+        ";
+
+        return $this->db->query($sql)->result_array();
+    }
+
 }

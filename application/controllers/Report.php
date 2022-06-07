@@ -80,6 +80,9 @@ class Report extends CI_Controller {
 		$this->load->view("report/reportI", $data);
 	}
 
-
+	public function reportJ(){
+		$data["data_report"]=$this->report_mdl->report_j();
+		$this->load->view("report/reportJ", $data);
+	}
 
 }
