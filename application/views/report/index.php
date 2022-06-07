@@ -49,7 +49,9 @@ $this->load->view("layout/header", $data);
             <a class="w3-btn w3-teal" href="<?= site_url("report/reportb") ?>" > List. Estudiantes por Grupo</a>
         </div>
         <div class="w3-col m4">
-            <button class="w3-btn w3-orange" >2</button>
+            <a class="w3-btn w3-orange" href="<?= site_url("report/reporte"); ?>" >
+                Materias por Grupo
+            </a>
         </div>
         <div class="w3-col m4">
             <a class="w3-btn w3-red" href="<?= site_url("report/reporti") ?>" >

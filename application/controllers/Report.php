@@ -47,6 +47,20 @@ class Report extends CI_Controller {
 	}
 
 
+	public function reportE(){
+
+		$this->load->model("Group_model", "group_mdl");
+		$data["groups"] = $this->group_mdl->get_all();
+
+		$anio = empty($this->input->post("grupo"))?
+					1:
+					$this->input->post("grupo");
+
+		$data["data_report"]=$this->report_mdl->report_e($anio);
+		$this->load->view("report/reportE", $data);
+	}
+
+
 	public function reportH(){
 
 		$anio = empty($this->input->post("anio"))?

@@ -56,6 +56,29 @@ class Report_model extends CI_Model {
         return $this->db->query($sql)->result_array();
     }
 
+    public function report_e( $codigo ){
+
+        $sql = "
+        select
+            u.tipo_documento_codigo,
+            u.num_documento,
+            u.nombres,
+            u.apellidos,
+            d.profesion,
+            g.nombre gru_nombre,
+            g.anio,
+            m.nombre mat_nombre
+        from usuario u 
+        join docente d on u.num_documento = d.usuario_num_documento
+        join grupo g on g.docente_num_documento = d.usuario_num_documento
+        join materia_grupo mg on mg.grupo_codigo = g.codigo
+        join materia m on m.codigo = mg.materia_codigo
+        where g.codigo = ?
+        ";
+
+        return $this->db->query($sql, [$codigo])->result_array();
+    }
+
 
     public function report_h($anio){
         $sql="
